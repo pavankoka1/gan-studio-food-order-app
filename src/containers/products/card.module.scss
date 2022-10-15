@@ -1,0 +1,177 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .card {
+        cursor: pointer;
+        position: relative;
+        background: #000;
+        width: 350px;
+        height: 350px;
+
+        .addToCart {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 8px 12px;
+            background-color: #ccc;
+            border-radius: 8px;
+
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            z-index: 10;
+
+            transition: all 0.6s;
+
+            p {
+                border-left: 1px solid #333;
+                border-right: 1px solid #333;
+                width: 40px;
+                text-align: center;
+            }
+        }
+
+        img {
+            min-width: 100%;
+            height: calc(100% + 40px);
+            z-index: 1;
+        }
+
+        img {
+            -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+            transition: opacity 0.35s, transform 0.35s;
+        }
+
+        .content {
+            padding: 20px;
+
+            &::before,
+            &::after {
+                position: absolute;
+                content: '';
+                opacity: 0;
+            }
+
+            &::before {
+                top: 50px;
+                right: 30px;
+                bottom: 50px;
+                left: 30px;
+                border-top: 1px solid #fff;
+                border-bottom: 1px solid #fff;
+                -webkit-transform: scale(0, 1);
+                transform: scale(0, 1);
+                -webkit-transform-origin: 0 0;
+                transform-origin: 0 0;
+            }
+
+            &::after {
+                top: 30px;
+                right: 50px;
+                bottom: 30px;
+                left: 50px;
+                border-right: 1px solid #fff;
+                border-left: 1px solid #fff;
+                -webkit-transform: scale(1, 0);
+                transform: scale(1, 0);
+                -webkit-transform-origin: 100% 0;
+                transform-origin: 100% 0;
+            }
+
+            h2 {
+                z-index: 2;
+                padding-top: 26%;
+                -webkit-transition: -webkit-transform 0.35s;
+                transition: transform 0.35s;
+            }
+
+            p {
+                z-index: 2;
+                padding: 0.5em 2em;
+                text-transform: none;
+                opacity: 0;
+                -webkit-transform: translate3d(0, -10px, 0);
+                transform: translate3d(0, -10px, 0);
+            }
+
+            &::before,
+            &::after,
+            p {
+                -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+                transition: opacity 0.35s, transform 0.35s;
+            }
+
+            &:hover {
+                &::before,
+                &::after {
+                    opacity: 1;
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                }
+
+                h2,
+                p {
+                    opacity: 1;
+                    -webkit-transform: translate3d(0, 0, 0);
+                    transform: translate3d(0, 0, 0);
+                }
+
+                &::before,
+                &::after,
+                h2,
+                p {
+                    -webkit-transition-delay: 0.15s;
+                    transition-delay: 0.15s;
+                }
+            }
+        }
+
+        &:hover {
+            img {
+                opacity: 0.7;
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+
+            .content {
+                &::before,
+                &::after {
+                    opacity: 1;
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                }
+
+                h2,
+                p {
+                    opacity: 1;
+                    -webkit-transform: translate3d(0, 0, 0);
+                    transform: translate3d(0, 0, 0);
+                }
+
+                &::before,
+                &::after,
+                h2,
+                p {
+                    -webkit-transition-delay: 0.15s;
+                    transition-delay: 0.15s;
+                }
+            }
+
+            img {
+                -webkit-transition-delay: 0.15s;
+                transition-delay: 0.15s;
+            }
+        }
+    }
+
+    &:hover {
+        .card {
+            .addToCart {
+                opacity: 1;
+            }
+        }
+    }
+}
